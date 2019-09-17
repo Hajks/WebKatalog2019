@@ -14,7 +14,7 @@ namespace WebKatalog2019
     {
         private IWebDriver _driver;
 
-        [Given(@"I Navigate to the Login page '(.*)'")]
+        [Given(@"I navigate to the Login page '(.*)'")]
         public void GivenINavigateToTheLoginPage(string LoginPageUrl)
         {
             _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));

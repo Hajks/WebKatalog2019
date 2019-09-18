@@ -81,8 +81,8 @@ namespace WebKatalog2019.Feature
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
-testRunner.Given("I navigate to the Login page \'https://apbeta.webkatalog.pl/Account/Logowanie?Retu" +
-                    "rnUrl=/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I navigate to the page \'https://apbeta.webkatalog.pl/Account/Logowanie?ReturnUrl=" +
+                    "/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
 testRunner.When(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
@@ -108,8 +108,8 @@ testRunner.Then("the page should contain element like this \'Reklamacje\'", ((st
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 15
-testRunner.Given("I navigate to the Login page \'https://apbeta.webkatalog.pl/Account/Logowanie?Retu" +
-                    "rnUrl=/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I navigate to the page \'https://apbeta.webkatalog.pl/Account/Logowanie?ReturnUrl=" +
+                    "/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
 testRunner.When(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17

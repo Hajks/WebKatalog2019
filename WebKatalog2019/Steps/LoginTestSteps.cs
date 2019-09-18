@@ -6,22 +6,22 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
+using WebKatalog2019.Driver;
 
 namespace WebKatalog2019
 {
     [Binding]
     public class LoginTestSteps
     {
-        private IWebDriver _driver;
+        IWebDriver _driver = WebDriverSingleton.getInstance();
 
-        [Given(@"I navigate to the Login page '(.*)'")]
-        public void GivenINavigateToTheLoginPage(string LoginPageUrl)
+        [Given(@"I navigate to the page '(.*)'")]
+        public void GivenINavigateToThePage(string LoginPageUrl)
         {
-            _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             _driver.Manage().Window.Maximize();
             _driver.Url = LoginPageUrl;
         }
-        
+
         [When(@"I Login with Username '(.*)' and Password '(.*)' on the Login Page")]
         public void WhenILoginWithUsenameAndPasswordOnTheLoginPage(string Login, string Password)
         {
@@ -38,10 +38,11 @@ namespace WebKatalog2019
             Assert.True(_driver.PageSource.Contains(TextToFind));
         }
 
-        [AfterScenario]
-        public void CloseBrowser()
-        {
-            _driver.Dispose();
-        }
+        //[AfterScenario]
+        //public void CloseBrowser()
+        //{
+        //    _driver.Close();
+        //    _driver = WebDriverSingleton.getInstance();
+        //}
     }
 }

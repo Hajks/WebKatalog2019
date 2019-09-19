@@ -71,21 +71,27 @@ namespace WebKatalog2019.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Successful Login by User")]
+        [NUnit.Framework.CategoryAttribute("LoginUser")]
         [NUnit.Framework.TestCaseAttribute("demo11", "demo11", null)]
         [NUnit.Framework.TestCaseAttribute("demo12", "demo12", null)]
         [NUnit.Framework.TestCaseAttribute("demo13", "demo13", null)]
         public virtual void SuccessfulLoginByUser(string login, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login by User", null, exampleTags);
-#line 3
+            string[] @__tags = new string[] {
+                    "LoginUser"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login by User", null, @__tags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 4
-testRunner.Given("I navigate to the page \'https://apbeta.webkatalog.pl/Account/Logowanie?ReturnUrl=" +
-                    "/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 5
-testRunner.When(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
+testRunner.Given("I navigate to the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+testRunner.When(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
 testRunner.Then("the page should contain element like this \'Reklamacje\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -93,6 +99,7 @@ testRunner.Then("the page should contain element like this \'Reklamacje\'", ((st
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login with not valid login and password")]
+        [NUnit.Framework.CategoryAttribute("LoginUser")]
         [NUnit.Framework.TestCaseAttribute("", "", null)]
         [NUnit.Framework.TestCaseAttribute("notvalidlogin", "", null)]
         [NUnit.Framework.TestCaseAttribute("", "notvalidpassword", null)]
@@ -103,16 +110,21 @@ testRunner.Then("the page should contain element like this \'Reklamacje\'", ((st
         [NUnit.Framework.TestCaseAttribute("notvalidlogin", "notvalidpassword", null)]
         public virtual void LoginWithNotValidLoginAndPassword(string login, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with not valid login and password", null, exampleTags);
-#line 14
+            string[] @__tags = new string[] {
+                    "LoginUser"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with not valid login and password", null, @__tags);
+#line 18
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 15
-testRunner.Given("I navigate to the page \'https://apbeta.webkatalog.pl/Account/Logowanie?ReturnUrl=" +
-                    "/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
+#line 19
+testRunner.Given("I navigate to the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 20
 testRunner.When(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 21
 testRunner.Then("the page should contain element like this \'Integra Software\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -2,39 +2,47 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using WebKatalog2019.Driver;
+using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
+using WebKatalog2019.Helper;
+using WebKatalog2019.Pages;
 
 namespace WebKatalog2019
 {
     [Binding]
     public class MakingOrderSteps
     {
-        IWebDriver _driver = WebDriverSingleton.getInstance();
-        private string orderNumber;
+        private IWebDriver _driver;
+        //private string orderNumber;
 
-        [Given(@"I Login with Username '(.*)' and Password '(.*)' on the Login Page")]
-        public void GivenILoginWithUsernameAndPasswordOnTheLoginPage(string Login, string Password)
+        private IObjectContainer container;
+        public IWebDriver Driver => container.Resolve<IWebDriver>();
+        private DashboardPage dashboardPage;
+        private SeleniumHelper seleniumHelper;
+        private WaitHelper waitHelper;
+        private ScenarioContext scenarioContext;
+
+        public MakingOrderSteps(IObjectContainer container, DashboardPage dashboardPage, SeleniumHelper seleniumHelper, WaitHelper waitHelper, ScenarioContext scenarioContext)
         {
-            IWebElement LoginTextBox = _driver.FindElement(By.XPath("//*[@id='LoginInput']"));
-            LoginTextBox.SendKeys(Login);
-            IWebElement PasswordTextBox = _driver.FindElement(By.XPath("//*[@id='HasloInput']"));
-            PasswordTextBox.SendKeys(Password);
-            _driver.FindElement(By.XPath("//*[@id='panelLogowaniaContainer']/div[2]/form/input[2]")).Click();
+            this.container = container;
+            this.dashboardPage = dashboardPage;
+            this.seleniumHelper = seleniumHelper;
+            this.scenarioContext = scenarioContext;
+            this.waitHelper = waitHelper;
         }
 
-            [Given(@"I make sure that im on the page '(.*)'")]
-            public void GivenIMakeSureThatImOnThePage(string CorrectUrl)
+        [Given(@"I make sure that im on the page '(.*)'")]
+        public void GivenIMakeSureThatImOnThePage(string CorrectUrl)
+        {
+            if (seleniumHelper.GetUrl() != CorrectUrl)
             {
-                if (_driver.Url != CorrectUrl)
-                {
-                    _driver.Navigate().GoToUrl(CorrectUrl);
-                }
+                seleniumHelper.GoToPage(CorrectUrl);
             }
+        }
 
-            [Given(@"I make new order")]
+        [Given(@"I make new order")]
         public void GivenIMakeNewOrder()
         {
             Thread.Sleep(1000);
@@ -44,7 +52,7 @@ namespace WebKatalog2019
             NewOrderButton.Click();
             Thread.Sleep(1000);
             string OrderText = _driver.FindElement(By.CssSelector("body > div.sweet-alert.showSweetAlert.visible > p")).Text;
-            orderNumber = OrderText.Substring(OrderText.LastIndexOf(':') + 1).Replace(" ", string.Empty);
+            //orderNumber = OrderText.Substring(OrderText.LastIndexOf(':') + 1).Replace(" ", string.Empty);
 
             IWebElement OkButton = _driver.FindElement(By.CssSelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button"));
             OkButton.Click();
@@ -102,10 +110,10 @@ namespace WebKatalog2019
         {
             Thread.Sleep(1000);
             IWebElement OrderDropdownArrow = _driver.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul > li.visible-lg.dropdown > a.dropdown-toggle > i"));
-            OrderDropdownArrow.Click();                                             
+            OrderDropdownArrow.Click();
 
             IWebElement CompleteOrderButton = _driver.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul > li.visible-lg.dropdown.open > ul > li > div.podglad-koszyka-btn > div.btn.btn-czarny.widget-zamowienia-btn-realizuj"));
-            CompleteOrderButton.Click();                                    
+            CompleteOrderButton.Click();
         }
 
         [Then(@"I should see list of items with a correct sum value")]

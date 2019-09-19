@@ -71,32 +71,34 @@ namespace WebKatalog2019.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("MakingOrder")]
-        [NUnit.Framework.TestCaseAttribute("demo12", "demo12", "Numer katalogowy", "Ct848", "0", "0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("demo12", "demo12", "Numer katalogowy", "94737", "0", "0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("demo12", "demo12", "Numer katalogowy", "CT848K4", "0", "0", "1", null)]
-        public virtual void MakingOrder(string login, string password, string type, string number, string fvamount, string paramount, string wzamount, string[] exampleTags)
+        [NUnit.Framework.CategoryAttribute("LoginUser")]
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "Ct848", "0", "0", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "94737", "0", "0", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "CT848K4", "0", "0", "1", null)]
+        public virtual void MakingOrder(string type, string number, string fvamount, string paramount, string wzamount, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingOrder", null, exampleTags);
-#line 3
+            string[] @__tags = new string[] {
+                    "LoginUser"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingOrder", null, @__tags);
+#line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 4
- testRunner.Given("I navigate to the page \'https://apbeta.webkatalog.pl/Account/Logowanie?ReturnUrl=" +
-                    "/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.And(string.Format("I Login with Username \'{0}\' and Password \'{1}\' on the Login Page", login, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I make sure that im on the page \'https://apbeta.webkatalog.pl/artykul\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I make sure that im on the page \'https://apbeta.webkatalog.pl/artykul\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
  testRunner.And("I make new order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
+#line 7
  testRunner.And(string.Format("I search for specific item with specific \'{0}\' number \'{1}\'", type, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
+#line 8
  testRunner.And(string.Format("I add item with number \'{0}\' to order with amounts of : fv \'{1}\', par \'{2}\', WZ \'" +
                         "{3}\'", number, fvamount, paramount, wzamount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
+#line 9
  testRunner.When("I go to order summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
+#line 10
  testRunner.Then("I should see list of items with a correct sum value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

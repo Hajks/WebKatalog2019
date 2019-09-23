@@ -1,10 +1,12 @@
 ﻿Feature: LoginTest
 
 
-@LoginUser
+
 Scenario Outline: Successful Login by User
 Given I navigate to the login page
-When I Login with Username '<Login>' and Password '<Password>' on the Login Page
+When User navigate '<Login>' 
+And Password '<Password>'
+And I click 
 Then the page should contain element like this 'Reklamacje'
 
 Examples: 
@@ -14,7 +16,6 @@ Examples:
 | demo13 | demo13   |
 
 
-@LoginUser
 Scenario Outline: Login with not valid login and password
 Given I navigate to the login page
 When I Login with Username '<Login>' and Password '<Password>' on the Login Page

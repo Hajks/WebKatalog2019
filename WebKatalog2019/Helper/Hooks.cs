@@ -27,7 +27,10 @@ namespace WebKatalog2019.Helper
         [BeforeScenario]
         public void BeforeScenario()
         {
-            var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
+            var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), options);
+            
             container.RegisterInstanceAs<IWebDriver>(driver);
         }
 

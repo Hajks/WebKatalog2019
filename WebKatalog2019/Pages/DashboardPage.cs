@@ -25,10 +25,13 @@ namespace WebKatalog2019.Pages
         public IWebElement CatNumberButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#szukajWgNumeru")]
-        public IWebElement SearchingField { get; set; }
+        public IWebElement SearchField { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#szukaj-wg-numeru-index > div.input-group > div > button > i")]
         public IWebElement SearchButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "wyszukiwarka_rd_0")]
+        public IWebElement CatalogueNumber { get; set; }
 
         private IWebDriver driver;
         public DashboardPage(IObjectContainer container)
@@ -36,6 +39,8 @@ namespace WebKatalog2019.Pages
             driver = container.Resolve<IWebDriver>();
             PageFactory.InitElements(driver, this);
         }
+
+
 
 
 

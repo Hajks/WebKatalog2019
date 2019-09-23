@@ -26,6 +26,11 @@ namespace WebKatalog2019.Helper
             return driver.Url;
         }
 
+        public bool Contains(string text)
+        {
+            return driver.PageSource.Contains(text);
+        }
+
 
     }
 }

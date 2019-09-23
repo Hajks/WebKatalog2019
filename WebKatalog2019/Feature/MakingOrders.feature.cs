@@ -69,13 +69,28 @@ namespace WebKatalog2019.Feature
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line 4
+ testRunner.Given("I make sure that im on the test page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 5
+ testRunner.And("I make new order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 6
+ testRunner.And("I search for specific item with specific \'Numer katalogowy\' number \'CT848\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 7
+ testRunner.And("I add item with number \'CT848\' to order with amounts of : fv \'0\', par \'0\', WZ \'1\'" +
+                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("MakingOrder")]
         [NUnit.Framework.CategoryAttribute("LoginUser")]
-        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "Ct848", "0", "0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "94737", "0", "0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "CT848K4", "0", "0", "1", null)]
-        public virtual void MakingOrder(string type, string number, string fvamount, string paramount, string wzamount, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "Ct848", "0", "0", "1", "Ct848", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "94737", "0", "0", "1", "Ct848", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer katalogowy", "CT848K4", "0", "0", "1", "Ct848", null)]
+        public virtual void MakingOrder(string type, string number, string fvamount, string paramount, string wzamount, string number2, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "LoginUser"};
@@ -84,21 +99,37 @@ namespace WebKatalog2019.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingOrder", null, @__tags);
-#line 4
+#line 10
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
- testRunner.Given("I make sure that im on the page \'https://apbeta.webkatalog.pl/artykul\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 6
- testRunner.And("I make new order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
- testRunner.And(string.Format("I search for specific item with specific \'{0}\' number \'{1}\'", type, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
- testRunner.And(string.Format("I add item with number \'{0}\' to order with amounts of : fv \'{1}\', par \'{2}\', WZ \'" +
-                        "{3}\'", number, fvamount, paramount, wzamount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
+#line 3
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "number",
+                        "fvamount",
+                        "paramount",
+                        "wzamount"});
+            table1.AddRow(new string[] {
+                        "Ct848",
+                        "0",
+                        "0",
+                        "1"});
+            table1.AddRow(new string[] {
+                        "94737",
+                        "0",
+                        "0",
+                        "1"});
+            table1.AddRow(new string[] {
+                        "CT848K4",
+                        "0",
+                        "0",
+                        "1"});
+#line 11
+ testRunner.And("I search and add some items:", ((string)(null)), table1, "And ");
+#line 16
  testRunner.When("I go to order summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
+#line 17
  testRunner.Then("I should see list of items with a correct sum value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

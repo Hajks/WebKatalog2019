@@ -49,7 +49,7 @@ namespace WebKatalog2019
         [Then(@"the page should contain element like this '(.*)'")]
         public void ThenThePageShouldContainElementLikeThis(string TextToFind)
         {
-            string p1 = TextToFind;
+            Assert.True(seleniumHelper.Contains(TextToFind));
         }
 
 

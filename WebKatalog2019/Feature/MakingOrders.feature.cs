@@ -69,21 +69,6 @@ namespace WebKatalog2019.Feature
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 3
-#line 4
- testRunner.Given("I make sure that im on the test page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 5
- testRunner.And("I make new order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 6
- testRunner.And("I search for specific item with specific \'Numer katalogowy\' number \'CT848\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
- testRunner.And("I add item with number \'CT848\' to order with amounts of : fv \'0\', par \'0\', WZ \'1\'" +
-                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("MakingOrder")]
         [NUnit.Framework.CategoryAttribute("LoginUser")]
@@ -99,11 +84,9 @@ namespace WebKatalog2019.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingOrder", null, @__tags);
-#line 10
+#line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 3
-this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "number",
@@ -125,11 +108,11 @@ this.FeatureBackground();
                         "0",
                         "0",
                         "1"});
-#line 11
+#line 5
  testRunner.And("I search and add some items:", ((string)(null)), table1, "And ");
-#line 16
+#line 10
  testRunner.When("I go to order summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 11
  testRunner.Then("I should see list of items with a correct sum value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

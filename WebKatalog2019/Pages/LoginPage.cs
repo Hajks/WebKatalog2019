@@ -19,6 +19,16 @@ namespace WebKatalog2019.Pages
         [FindsBy(How = How.XPath, Using = "//*[@id='panelLogowaniaContainer']/div[2]/form/input[2]")]
         public IWebElement SubmitButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "LoginInput-error")]
+        public IList<IWebElement> LoginValidationError { get; set; }
+
+        [FindsBy(How = How.Id, Using = "HasloInput-error")]
+        public IList<IWebElement> PasswordValidationError { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'zalogowa')]")]
+        public IList <IWebElement> NotSuccessfullLoginValidation { get; set; }
+        
+
         private IWebDriver driver;
         public LoginPage(IObjectContainer container)
         {

@@ -9,6 +9,9 @@ namespace WebKatalog2019.Pages
 {
     public class DashboardPage
     {
+        [FindsBy(How = How.Id, Using = "logoutForm")]
+        public IWebElement LogoutButton { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li.visible-lg.dropdown > a.dropdown-toggle > i")]
         public IWebElement OrderDropdownArrow { get; set; }
 
